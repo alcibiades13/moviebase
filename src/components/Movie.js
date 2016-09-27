@@ -6,16 +6,17 @@ class Movie extends Component {
 
 		this.state = {
 			title: '',
-			Poster: ''
+			Poster: '',
+			Plot: ''
 		};	
 	}
 
 	render() {
 		return (
-			<div className="movie">
-				<span className="movie-title">{this.props.Title}</span>
+			<div className="col-md-4 movie">
+				<h4 className="movie-title">{this.props.Title}</h4>
 				<img className="movie-poster" src={this.props.Poster} />
-				<span>{console.log('Title ', this.props.Title)}</span>
+				<p className="movie-plot">{this.props.Plot}</p>
 			</div>
 		)
 	}

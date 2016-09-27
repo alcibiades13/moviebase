@@ -17,14 +17,14 @@ class SearchForm extends Component {
 
 		var self = this;
 
-		var url = "http://www.omdbapi.com/?s=Batman&y=&plot=short&r=json";
+		var url = "http://www.omdbapi.com/?s=wolf&r=json";
 		Response.get(url).then((data) => {
 			var jsonMovie = JSON.parse(data.text);
 
 			jsonMovie.Search.forEach((key) => {
 				var mov = key;
 				moviesVar.push(mov);
-				var movies = this.state.movies.slice()
+				var movies = this.state.movies.slice();
 				movies.push(mov);
 				this.setState({ movies: movies })
 			});
@@ -44,10 +44,14 @@ class SearchForm extends Component {
             <button type="submit" className="btn btn-primary submit">Search</button>
           </div>
         </form>
-        <div className="all-movies">
+        <div className="row all-movies">
 					{
 						this.state.movies.map((movie, i) => {
-							return <Movie Title={movie.Title} Poster={movie.Poster} key={i} />
+							if(movie.Poster == 'N/A') {
+								console.log('movie.Title', movie.Title, movie.Poster);
+								movie.Poster = './card.jpg';
+							}
+							return <Movie Title={movie.Title} Poster={movie.Poster} Plot={movie.Plot} key={i} />
 						})
 					}
 				</div>

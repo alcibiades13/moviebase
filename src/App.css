@@ -22,3 +22,33 @@ body {
 .submit {
   margin-top: 20px;
 }
+
+.all-movies {
+  overflow: auto;
+}
+
+.movie {
+  background-color: white;
+  /*margin: 20px;*/
+  box-shadow: 0px 3px 9px rgba(0,0,0, .3);
+  float: left;
+  padding: 30px 10px;
+  margin-bottom: 20px;
+}
+
+.movie-poster {
+  width: 250px;
+  height: 350px;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+}
+
+.form {
+  padding: 30px;
+  margin: 30px 0;
+  background-color: white;
+  box-shadow: 0px 3px 11px rgba(0,0,0, .3);
+}
