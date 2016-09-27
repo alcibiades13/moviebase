@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Movie from './Movie';
 import Response from 'superagent';
 
+let moviesVar = [];
 
 class SearchForm extends Component {
 	constructor(props) {
@@ -14,14 +15,21 @@ class SearchForm extends Component {
 
 	componentDidMount() {
 
+		var self = this;
+
 		var url = "http://www.omdbapi.com/?s=Batman&y=&plot=short&r=json";
 		Response.get(url).then((data) => {
 			var jsonMovie = JSON.parse(data.text);
-			let moviesArray = [];
-			jsonMovie.Search.map((key, index) => {
+
+			jsonMovie.Search.forEach((key) => {
 				var mov = key;
-				return <Movie title={mov.Title} />
+				moviesVar.push(mov);
+				var movies = this.state.movies.slice()
+				movies.push(mov);
+				this.setState({ movies: movies })
 			});
+
+			console.log('moviesVar ', moviesVar);
 
 
 		});
@@ -36,13 +44,13 @@ class SearchForm extends Component {
             <button type="submit" className="btn btn-primary submit">Search</button>
           </div>
         </form>
-        <div className="movie-list">
-        	<div className="movie">
-        		<h2 className="movie-title">{console.log('this.state ', this.state.movies)}</h2>
-        		<img className="movie-poster" src={this.state.movies.Poster} />
-        		<p className="movie-plot">{this.state.movies.Plot}</p>
-        	</div>
-        </div>
+        <div className="all-movies">
+					{
+						this.state.movies.map((movie, i) => {
+							return <Movie Title={movie.Title} Poster={movie.Poster} key={i} />
+						})
+					}
+				</div>
 			</div>
 		)
 	}

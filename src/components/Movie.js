@@ -5,15 +5,17 @@ class Movie extends Component {
 		super(props);
 
 		this.state = {
-			title: ''
+			title: '',
+			Poster: ''
 		};	
 	}
 
 	render() {
 		return (
 			<div className="movie">
-				<span className="movie-title">{this.props.title.title}</span>
-				<span>{console.log('title ', this.props.title.title)}</span>
+				<span className="movie-title">{this.props.Title}</span>
+				<img className="movie-poster" src={this.props.Poster} />
+				<span>{console.log('Title ', this.props.Title)}</span>
 			</div>
 		)
 	}

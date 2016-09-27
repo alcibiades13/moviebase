@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SearchForm from './components/SearchForm';
-import MovieList from './components/MovieList';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +11,6 @@ class App extends Component {
         </div>
         <div className="container">
           <SearchForm />
-          <MovieList />
         </div>
       </div>
     );
