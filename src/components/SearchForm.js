@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Movie from './Movie';
 import Response from 'superagent';
 
 
@@ -7,30 +8,22 @@ class SearchForm extends Component {
 		super(props);
 
 		this.state = {
-			movie: {
-				Title: '',
-				Poster: '',
-				Plot: ''
-			}
+			movies: []
 		}
 	}
 
 	componentDidMount() {
-		var myInit = {
-			method: "GET"
-		};
 
-		var url = "http://www.omdbapi.com/?t=Se7en&y=&plot=short&r=json";
+		var url = "http://www.omdbapi.com/?s=Batman&y=&plot=short&r=json";
 		Response.get(url).then((data) => {
 			var jsonMovie = JSON.parse(data.text);
-			console.log(jsonMovie);
-			this.setState({
-				movie: {
-					Title: jsonMovie.Title,
-					Poster: jsonMovie.Poster,
-					Plot: jsonMovie.Plot
-				}
+			let moviesArray = [];
+			jsonMovie.Search.map((key, index) => {
+				var mov = key;
+				return <Movie title={mov.Title} />
 			});
+
+
 		});
 	}
 
@@ -45,9 +38,9 @@ class SearchForm extends Component {
         </form>
         <div className="movie-list">
         	<div className="movie">
-        		<h2 className="movie-title">{this.state.movie.Title}</h2>
-        		<img className="movie-poster" src={this.state.movie.Poster} />
-        		<p className="movie-plot">{this.state.movie.Plot}</p>
+        		<h2 className="movie-title">{console.log('this.state ', this.state.movies)}</h2>
+        		<img className="movie-poster" src={this.state.movies.Poster} />
+        		<p className="movie-plot">{this.state.movies.Plot}</p>
         	</div>
         </div>
 			</div>
