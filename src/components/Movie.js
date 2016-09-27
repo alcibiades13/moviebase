@@ -12,7 +12,8 @@ class Movie extends Component {
 	render() {
 		return (
 			<div className="movie">
-				<span className="movie-title">{this.state.title}</span>
+				<span className="movie-title">{this.props.title.title}</span>
+				<span>{console.log('title ', this.props.title.title)}</span>
 			</div>
 		)
 	}
