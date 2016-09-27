@@ -51,7 +51,7 @@ class SearchForm extends Component {
 								console.log('movie.Title', movie.Title, movie.Poster);
 								movie.Poster = './card.jpg';
 							}
-							return <Movie Title={movie.Title} Poster={movie.Poster} Plot={movie.Plot} key={i} />
+							return <Movie movie={movie} key={i} />
 						})
 					}
 				</div>
