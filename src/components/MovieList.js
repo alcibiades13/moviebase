@@ -10,7 +10,7 @@ class MovieList extends Component {
 					this.props.movies.map((movie, i) => {
 						if(movie.Poster === 'N/A') {
 							console.log('movie.Title', movie.Title, movie.Poster);
-							movie.Poster = './card.jpg';
+							movie.Poster = './poster.jpg';
 						}
 						return <Movie movie={movie} key={i} />
 					})

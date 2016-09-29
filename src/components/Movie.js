@@ -13,7 +13,7 @@ class Movie extends Component {
 
 	render() {
 		return (
-			<div className="col-md-4 movie">
+			<div className="col-md-3 movie">
 				<h4 className="movie-title">{this.props.movie.Title}</h4>
 				<img className="movie-poster" src={this.props.movie.Poster} />
 				<p className="movie-plot">{this.props.movie.Plot}</p>
