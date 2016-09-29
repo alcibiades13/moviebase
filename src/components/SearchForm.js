@@ -13,11 +13,9 @@ class SearchForm extends Component {
 		}
 	}
 
-	componentDidMount() {
+	getMovies(searchKey) {
 
-		var self = this;
-
-		var url = "http://www.omdbapi.com/?s=wolf&r=json";
+		var url = "http://www.omdbapi.com/?s=" + searchKey + "&r=json";
 		Response.get(url).then((data) => {
 			var jsonMovie = JSON.parse(data.text);
 
@@ -29,25 +27,31 @@ class SearchForm extends Component {
 				this.setState({ movies: movies })
 			});
 
-			console.log('moviesVar ', moviesVar);
-
-
 		});
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+
+		document.querySelector('.all-movies').innerHTML = '';
+
+		let searchInput = document.querySelector('.search-input').value;
+		this.getMovies(searchInput);
 	}
 
 	render() {
 		return (
 			<div className="container">
-        <form className="form">
+        <form className="form" action="" onSubmit={this.handleSubmit.bind(this)}>
           <div className="panel">
-            <input type="text" className="form-control" placeholder="Search for a movie" />
+            <input type="text" className="form-control search-input" placeholder="Search for a movie" />
             <button type="submit" className="btn btn-primary submit">Search</button>
           </div>
         </form>
         <div className="row all-movies">
 					{
 						this.state.movies.map((movie, i) => {
-							if(movie.Poster == 'N/A') {
+							if(movie.Poster === 'N/A') {
 								console.log('movie.Title', movie.Title, movie.Poster);
 								movie.Poster = './card.jpg';
 							}
