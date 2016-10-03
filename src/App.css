@@ -16,6 +16,8 @@ body {
   /*height: 60px;*/
   padding: 20px;
   color: white;
+  text-align: center;
+  
   box-shadow: 0px 3px 12px rgba(0,0,0, .4);
 }
 
@@ -83,4 +85,61 @@ footer {
 
 main {
   min-height: 750px;
+}
+
+.single-movie {
+  display: flex;
+  padding-top: 24px;
+}
+
+.single-movie-poster {
+  margin-right: 24px;
+  box-shadow: 0px 3px 11px rgba(0,0,0, .3);
+}
+
+.single-movie-info {
+  text-align: left;
+  max-width: 600px;
+}
+
+.single-movie-title {
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  
+}
+
+.movie-cast {
+  font-style: italic;
+  color: #777;
+}
+
+.back-button {
+  text-transform: uppercase;
+  background-color: #333;
+  color: white;
+  padding: 5px 24px;
+  margin-left: 16px;
+  display: inline-block;
+  margin-top: 24px;
+}
+
+.back-button:hover {
+  color: white;
+  background-color: #000;
+  
+}
+
+.imdb-rating {
+  font-size: 3em;
+  font-weight: bold;
+  color: orange;
+}
+
+hr {
+  border-color: #AAA;
+}
+
+.movie-plot, .movie-cast {
+  font-size: 1.125em;
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MovieList from './MovieList';
 import Response from 'superagent';
 import { Link } from 'react-router';
+import { getMoviesAPI } from '../xhr';
 
 
 class SearchForm extends Component {
@@ -15,9 +16,10 @@ class SearchForm extends Component {
 
 	getMovies(searchKey) {
 
-		let url = "http://www.omdbapi.com/?s=" + searchKey + "&r=json";
-		Response.get(url).then((data) => {
+		getMoviesAPI(searchKey).then((data) => {
 			let jsonMovie = JSON.parse(data.text);
+
+			console.log(jsonMovie);
 
 			jsonMovie.Search.forEach((movie) => {
 				let movies = this.state.movies.slice();
@@ -40,7 +42,6 @@ class SearchForm extends Component {
 		return (
 			<div className="App">
 				<div className="container">
-					<Link to="/other">Other page</Link>
 	        <form className="form" action="" onSubmit={this.handleSubmit.bind(this)}>
 	          <div className="panel">
 	            <input type="text" className="form-control search-input" placeholder="Search for a movie" />
