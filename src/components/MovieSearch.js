@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MovieList from './MovieList';
 import Response from 'superagent';
+import { Link } from 'react-router';
 
 
 class SearchForm extends Component {
@@ -37,14 +38,17 @@ class SearchForm extends Component {
 
 	render() {
 		return (
-			<div className="container">
-        <form className="form" action="" onSubmit={this.handleSubmit.bind(this)}>
-          <div className="panel">
-            <input type="text" className="form-control search-input" placeholder="Search for a movie" />
-            <button type="submit" className="btn btn-primary submit">Search</button>
-          </div>
-        </form>
-        <MovieList movies={this.state.movies} />
+			<div className="App">
+				<div className="container">
+					<Link to="/other">Other page</Link>
+	        <form className="form" action="" onSubmit={this.handleSubmit.bind(this)}>
+	          <div className="panel">
+	            <input type="text" className="form-control search-input" placeholder="Search for a movie" />
+	            <button type="submit" className="btn btn-primary submit">Search</button>
+	          </div>
+	        </form>
+	        <MovieList movies={this.state.movies} />
+				</div>
 			</div>
 		)
 	}
